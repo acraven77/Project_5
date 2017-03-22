@@ -93,7 +93,7 @@ function formSubmit() {
           }
         }
 
-      //Adding event listener to call album data(tracks, ect..) once album art is clicked (exceeds expectations).
+      //Adding event listener to call album data(tracks, ect..) once album title is clicked (exceeds expectations).
       for (var i = 0; i < links.length; i++) {
         links[i].addEventListener("click", clickLink);
       }
@@ -103,7 +103,7 @@ function formSubmit() {
   $.getJSON(url, options, spotifySearch);
 
 
-  //Once album art is clicked another ajax call is made. This is the callback function (exceeds expectations).
+  //Once the album title is clicked another ajax call is made. This is the callback function (exceeds expectations).
   var clickLink = function() {
     var mainBody = document.querySelector('body');
     var mainContent = document.querySelector('div.main-content.clearfix');
@@ -117,10 +117,10 @@ function formSubmit() {
       console.log(albumData);
 
       albumHtml += '<div class="album-page-content"><span><a>Search Results</a></span>';
+      albumHtml += '<span><img src="' + albumData.images[1].url + '"></span>';
 
       //The href in the achor tag will send the user the to albums spotify page (exceeds expectations)
-      albumHtml += '<span><a href="' + albumData.external_urls.spotify + '"><img src="' + albumData.images[1].url + '"></a></span>';
-      albumHtml += '<span class="separatePage">' + albumData.name + " " + "(" + albumData.release_date.slice(0, 4) + ")" + '</span>';
+      albumHtml += '<span class="separatePage"><a href="' + albumData.external_urls.spotify + '">' + albumData.name + " " + "(" + albumData.release_date.slice(0, 4) + ")" + '</a></span>';
       albumHtml += '<span class="separatePage">' + albumData.artists[0].name + '</span>';
       albumHtml += '<span class="separatePage">track list:</span>';
       albumHtml += '<ul id="trackList" class="separatePage"></ul>'

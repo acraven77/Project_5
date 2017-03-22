@@ -238,6 +238,10 @@ button {
   font-weight: bold;
 }
 
+.separatePage a:link, .separatePage a:visited {
+  color: white;
+}
+
 .album-page-content span:nth-of-type(4) {
   top: 135px;
   font-weight: 400;
